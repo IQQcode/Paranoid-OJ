@@ -1,13 +1,15 @@
 package top01;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @Author: iqqcode
  * @Date: 2020-10-01 20:36
  * @Description:记录子串出现的位置及次数
  */
-public class SubStringLocation {
+public class _02_SubStringLocation {
     public static void main(String[] args) {
         String str = "www.baidu.com/www.sina.com---www";
         String subStr = "www";
@@ -15,6 +17,7 @@ public class SubStringLocation {
         checkI(str, subStr);
         checkII(str, subStr);
         checkIII(str, subStr);
+        checkIV(str, subStr);
     }
 
     /**
@@ -62,6 +65,7 @@ public class SubStringLocation {
 
     /**
      * 【思路三】: 无法记录出现位置
+     *
      * @param str
      * @param subStr
      */
@@ -78,5 +82,18 @@ public class SubStringLocation {
             str = str.substring(index + subStr.length());
         }
         System.out.println(count);
+    }
+
+    //通过正则表达式
+    public static void checkIV(String str, String subStr) {
+        int count = 0;
+        Pattern pattern = Pattern.compile(subStr);
+        Matcher matcher = pattern.matcher(str);
+        while (matcher.find()) {
+            count++;
+            //group方法返回由以前匹配操作所匹配的输入子序列
+            System.out.println("匹配项" + count + "：" + matcher.group());
+        }
+        System.out.println("匹配个数为" + count);
     }
 }

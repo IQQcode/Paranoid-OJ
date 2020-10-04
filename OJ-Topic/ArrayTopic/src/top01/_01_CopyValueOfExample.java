@@ -8,7 +8,7 @@ package top01;
  * offset - 子阵列的初始偏移量。
  * count - 子阵列的长度。
  */
-public class CopyValueOfExample {
+public class _01_CopyValueOfExample {
     public static void main(String[] args) {
         char[] data = {'a','b','c','d','e','f','g','h','i','j','k'};
         String str1 = "Text";

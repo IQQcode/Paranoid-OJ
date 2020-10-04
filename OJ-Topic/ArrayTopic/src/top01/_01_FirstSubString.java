@@ -6,7 +6,7 @@ package top01; /**
 
 import java.util.*;
 
-public class FirstSubString {
+public class _01_FirstSubString {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String str = in.nextLine();
