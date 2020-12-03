@@ -1,5 +1,7 @@
 package nov27;
 
+import java.util.Scanner;
+
 /**
  * @Author: iqqcode
  * @Date: 2020-11-28 16:41
@@ -7,34 +9,22 @@ package nov27;
  */
 public class Main {
     public static void main(String args[]) throws InterruptedException {
-//        Thread t = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    Thread.sleep(2000);
-//                } catch (InterruptedException e) {
-//                    throw new RuntimeException(e);
-//                }
-//                System.out.print("2");
-//            }
-//        });
-//        t.start();
-//
-//        t.join();
-//        System.out.print("1");
-
-        StringBuffer a = new StringBuffer("A");
-        StringBuffer b = new StringBuffer("B");
-        operate(a, b);
-        System.out.println(a + "." + b);
-
-        int x = 5 >> 2;
-        int y =   x >>> 2;
-        System.out.println(x + " " + y);
+        Scanner in = new Scanner(System.in);
+        while (in.hasNextInt()) {
+            int n = in.nextInt();
+            System.out.println(count(n));
+        }
     }
 
-    private static void operate(StringBuffer a, StringBuffer b) {
-        a.append(b);
-        b = a;
+    public static int count(int n) {
+        //一定是偶数（6，8都是）,最小是6，10以上偶数都可以；
+        if (n % 2 != 0 || n == 10 || n < 6)
+            return -1;
+        //如果拿八个拿完最好
+        if (n % 8 == 0)
+            return n / 8;
+        //对于10以上的偶数，只要对8取余数不为0，就要从前面的1或者2个8中拿出2个
+        // 把余数补为6（本来余数就是6，就不用拿）。所以 + 1；
+        return 1 + n / 8;
     }
 }
